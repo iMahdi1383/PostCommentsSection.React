@@ -1,12 +1,18 @@
 # Modern React & Redux
 
+(Start of 3-14)
 &nbsp;
 
 ---
 
 ## Use React
 
-#### 1-11 : 'src/index.js' file :
+<details>
+<summary>
+<h5 style="display:inline">
+1-11 : 'src/index.js' : Add a Functional Component
+</h5>
+</summary>
 
 ```jsx
 // Import the React and ReactDOM libraries.
@@ -22,14 +28,18 @@ const App = () => {
 ReactDOM.render(<App />, document.querySelector("#root"));
 ```
 
-\
 &nbsp;
+
+</details>
 
 ---
 
 ## JSX
 
-#### 2-2 : Convert Html into JSX
+<details>
+<summary>
+<h5 style="display:inline">2-2 : Convert Html into JSX</h5>
+</summary>
 
 -   class :
 
@@ -44,13 +54,19 @@ ReactDOM.render(<App />, document.querySelector("#root"));
     <p style={{ color: 'red', text-align: 'center' }}> JSX </p>
     ```
 -   label for :
-    ```jsx
-    <label for="name"> Html </label>
-    <label htmlFor="name"> JSX </label>
-    ```
-    &nbsp;
 
-#### 2-6 : Use JS Variables in JSX
+    ```jsx
+    <label for="name"> Html </label> <label htmlFor="name"> JSX </label>
+    ```
+
+&nbsp;
+
+</details>
+
+<details>
+<summary>
+<h5 style="display:inline"> 2-6 : Use JS Variables in JSX</h5>
+</summary>
 
 -   Example :
 
@@ -99,7 +115,12 @@ ReactDOM.render(<App />, document.querySelector("#root"));
 
 &nbsp;
 
-#### 2-7 : ERROR : Objects are not valid as a React child
+</details>
+
+<details>
+<summary>
+<h5 style="display:inline"> 2-7 : ERROR : Objects are not valid as a React child</h5>
+</summary>
 
 ```jsx
 const buttonText = { text: "Click Me" }; //         Define an Object
@@ -109,16 +130,20 @@ const App = () => {
     return <div> {buttonText.text} </div>;      <!-- // Solved  :) -->
 ```
 
-\
-&nbsp;
+## </details>
 
 ---
 
-## Props
+### Components
 
-#### 3-11 : Use a Component in another one
+<details>
+<summary>
+<h5 style="display:inline">
+ 3-11 : External Component
+ </h5>
+</summary>
 
-1. Create 'src/CommentDetail.js' :
+1.  Create 'src/CommentDetail.js' :
 
     ```jsx
     import React from "react";
@@ -130,9 +155,76 @@ const App = () => {
     export default CommentDetail; // Export (to use in another component)
     ```
 
-2. Edit 'src/index.js' :
+2.  Edit 'src/index.js' :
+
     ```jsx
-    import React from "react";
-    import ReactDOM from "react-dom";
     import CommentDetail from "./CommentDetail"; // Import from 'src/CommentDetail.js'
+
+    const App = () => {
+        return (
+            <div>
+                <CommentDetail /> // use CommentDetail
+            </div>
+        );
+    };
     ```
+
+&nbsp;
+
+</details>
+
+<details>
+<summary>
+<h5 style="display:inline">
+ 3-12 : Props
+ </h5>
+</summary>
+
+1.  Edit 'src/CommentDetail.js' :
+
+    ```jsx
+    /* use props */
+    const CommentDetail = (props) => {
+        return (
+            <div>
+                {props.name} is {props.age} years old.
+            </div>
+        );
+    };
+
+    export default CommentDetail; // Export
+    ```
+
+2.  Edit 'src/index.js' :
+
+    ```jsx
+    import CommentDetail from "./CommentDetail"; // Import
+
+    const App = () => {
+        return (
+            <div>
+                <CommentDetail name="Jack" age="17" /> // use props
+            </div>
+        );
+    };
+    ```
+
+    </details>
+
+<details>
+<summary>
+<h5 style="display:inline">
+ 3-14 : Props in JSX attributes
+ </h5>
+</summary>
+
+1. in a Component :
+
+    ```jsx
+    <div>
+        <p> {props.name} </p> // out of attributes -> normal
+        <img src={props.image} /> // in attributes -> DO NOT USE ""
+    </div>
+    ```
+
+    </details>
