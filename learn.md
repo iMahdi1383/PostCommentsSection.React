@@ -1,7 +1,6 @@
 # Modern React & Redux
 
-(Start of 3-14)
-&nbsp;
+(End of 3-15)
 
 ---
 
@@ -209,7 +208,7 @@ const App = () => {
     };
     ```
 
-    </details>
+</details>
 
 <details>
 <summary>
@@ -218,13 +217,47 @@ const App = () => {
  </h5>
 </summary>
 
-1. in a Component :
+```jsx
+<div>
+    <p> {props.name} </p> // normal
+    <img src={props.image} /> // DO NOT USE ""
+</div>
+```
 
-    ```jsx
-    <div>
-        <p> {props.name} </p> // out of attributes -> normal
-        <img src={props.image} /> // in attributes -> DO NOT USE ""
-    </div>
+</details>
+
+<details>
+<summary>
+<h5 style="display:inline">
+ 3-16 : Use a Component in another Component (as Children)
+ </h5>
+</summary>
+
+1.  Edit 'src/index.js' :
+
+    ```html
+    // {props.children} = Text
+    <ApprovalCard> Are you sure you want to do this? </ApprovalCard>
+
+    // {props.children} = Component
+    <ApprovalCard>
+        <CommentDetail author="Sam" />
+    </ApprovalCard>
     ```
 
-    </details>
+2.  Edit 'src/ApprovalCard.js' :
+    ```jsx
+    const ApprovalCard = (props) => {
+        return (
+            <div>
+                <div>
+                    {props.children}
+                    <button>Yes</button>
+                    <button>No</button>
+                </div>
+            </div>
+        );
+    };
+    ```
+
+</details>
