@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import faker from "faker";       // its not working
 import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
 
 const App = () => {
     return (
         <div className="ui container comments">
+            <ApprovalCard />
             <CommentDetail
                 author="Sam"
                 timeAgo="2 minutes ago"
